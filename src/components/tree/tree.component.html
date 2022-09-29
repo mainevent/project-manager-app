@@ -1,0 +1,43 @@
+<div class="container">
+  <h2>Projects</h2>
+  <div *ngFor="let project of projects">
+    <h3>{{ project.name }}</h3>
+    <div class="tree">
+      <div *ngIf="project.tasks.length === 0">
+        There are no tasks yet
+      </div>
+      <ng-container *ngFor="let node of project.tasks">
+        <ng-template [ngTemplateOutlet]="nodeTemplate" [ngTemplateOutletContext]="{ $implicit: node }"></ng-template>
+      </ng-container>
+      <ng-template #nodeTemplate let-treeNode>
+        <div class="node" *ngIf="showNode(treeNode)">
+          <div class="node-control">
+            <div [style.marginLeft.px]="treeNode.level * 10"></div>
+            <span class="node-intend">
+              <span *ngIf="treeNode.children.length" class="node-icon" [ngClass]="{'expanded': !treeNode.collapsed}"
+                (click)="toggleNode(treeNode)">
+              </span>
+            </span>
+            <div>
+              <input type="checkbox" [(ngModel)]="treeNode.selected">
+            </div>
+            <div class="node-name">
+              {{ treeNode.data.name }}
+            </div>
+          </div>
+          <div class="node-body" [style.left.px]="(deepestLevel + treeNode.level - 1) * 110">
+            <div class="node-content">
+              <div>{{ treeNode.data.description }}</div>
+              <div>{{ treeNode.data.status }}</div>
+            </div>
+            <div class="node-actions">
+              <button mat-button color="primary" (click)="addNode(treeNode.key, project.tasks)">Add</button>
+              <button mat-button color="primary" (click)="editNode(treeNode)">Edit</button>
+              <button mat-button color="primary" (click)="deleteNode(treeNode, project.tasks)">Delete</button>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

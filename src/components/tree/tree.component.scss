@@ -1,0 +1,75 @@
+.container {
+  width: 960px;
+  margin: 0 auto;
+  background-color: rgba(35, 22, 174, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: calc(100% - 60px);
+  padding: 30px;
+}
+
+.tree {
+  background-color: rgba(35, 22, 174, 0.2);
+  border-radius: 15px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.node {
+  display: flex;
+  align-items: center;
+  height: 40px;
+  width: 100%;
+  background-color: rgba(35, 22, 174, 0.2);
+  margin-bottom: 10px;
+  border-radius: 4px;
+}
+
+.node-control {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.node-intend {
+  width: 24px;
+  height: 24px;
+  display: inline-block;
+}
+
+.node-icon {
+  background: url(../../assets/icons/keyboard_arrow_right.svg) 100%/contain;
+  width: 100%;
+  height: 100%;
+  display: inline-block;
+  transition: transform .3s;
+
+  &.expanded {
+    transform: rotate(90deg);
+  }
+}
+
+.node-body {
+  flex: auto;
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.node-content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding-left: 14px;
+}
+
+.node-actions {
+  display: flex;
+  justify-content: flex-end;
+  border-left: 1px solid;
+  margin-left: 14px;
+
+  button {
+    margin: 2px;
+  }
+}
