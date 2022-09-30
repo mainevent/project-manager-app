@@ -18,9 +18,6 @@
                 (click)="toggleNode(treeNode)">
               </span>
             </span>
-            <div>
-              <input type="checkbox" [(ngModel)]="treeNode.selected">
-            </div>
             <div class="node-name">
               {{ treeNode.data.name }}
             </div>
@@ -29,6 +26,7 @@
             <div class="node-content">
               <div>{{ treeNode.data.description }}</div>
               <div>{{ treeNode.data.status }}</div>
+              {{treeNode.level}}
             </div>
             <div class="node-actions">
               <button mat-button color="primary" (click)="addNode(treeNode.key, project.tasks)">Add</button>
